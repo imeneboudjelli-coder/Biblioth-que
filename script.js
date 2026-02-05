@@ -1,7 +1,9 @@
 // ================= LIVRES =================
 
 // Charger les livres depuis localStorage ou liste par défaut
+//******   JSON.parse ::::: transforme le texte stocké en vrai tableau JavaScript */
 let livres = JSON.parse(localStorage.getItem("livres")) || [
+  //Si aucun livre n’est trouvé dans le localStorage, on utilise cette liste par défaut
   { titre: "Les Misérables", auteur: "Victor Hugo", annee: 1862 },
   { titre: "Le Petit Prince", auteur: "Antoine de Saint-Exupéry", annee: 1943 },
   { titre: "L'Étranger", auteur: "Albert Camus", annee: 1942 },
@@ -11,25 +13,25 @@ let livres = JSON.parse(localStorage.getItem("livres")) || [
 
 // Sauvegarder les livres
 function saveLivres() {
-  localStorage.setItem("livres", JSON.stringify(livres));
+  localStorage.setItem("livres", JSON.stringify(livres));//JSON.stringify() transforme le tableau en texte pour pouvoir le stocker.
 }
 
 // ================= AFFICHAGE LIVRES =================
 function afficherLivres() {
-  const table = document.getElementById("liste-livres");
-  if (!table) return; // Si pas sur la page des livres
+  const table = document.getElementById("liste-livres");//recuperer tableau HTML avec son id
+  if (!table) return; // Si le tableau n'existe pas on arrete la fonction 
 
   while (table.rows.length > 1) {
-    table.deleteRow(1);
+    table.deleteRow(1); //On supprime toutes les lignes du tableau sauf l’entête pour eviter d'afficher plusieurs livres.
   }
 
-  livres.forEach((livre, index) => {
-    const row = table.insertRow();
+  livres.forEach((livre, index) => { //parcourir chaque livre du tableau 
+    const row = table.insertRow();// inserer une ligne
     row.insertCell(0).textContent = livre.titre;
     row.insertCell(1).textContent = livre.auteur;
     row.insertCell(2).textContent = livre.annee;
 
-    const actionCell = row.insertCell(3);
+    const actionCell = row.insertCell(3); // on ajoute une 4 eme colonne pour les bouttons
     actionCell.innerHTML = `
       <button onclick="emprunterLivre(${index})">Emprunter</button>
       <button onclick="supprimerLivre(${index})">Supprimer</button>
@@ -41,27 +43,27 @@ function afficherLivres() {
 const form = document.getElementById("form-livre");
 if (form) {
   form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    e.preventDefault();//Empêche le rechargement de la page.
 
-    const titre = document.getElementById("titre").value.trim();
+    const titre = document.getElementById("titre").value.trim(); //recuperer les valeurs e enlever les espaces inutiles 
     const auteur = document.getElementById("auteur").value.trim();
     const annee = document.getElementById("annee").value.trim();
 
     if (!titre || !auteur || !annee) {
       alert("Tous les champs sont obligatoires !");
       return;
-    }
+    } //verifier que rien n'est vide 
 
-    livres.push({ titre, auteur, annee });
-    saveLivres();
-    form.reset();
-    afficherLivres();
+    livres.push({ titre, auteur, annee });//ajouter le nouveu livre au tableau 
+    saveLivres(); //sauvegarder 
+    form.reset(); //vider formulaire 
+    afficherLivres();//mettre a jour l'affichage
   });
 }
 
 // Supprimer un livre
 function supprimerLivre(index) {
-  livres.splice(index, 1);
+  livres.splice(index, 1); //supprimer le livre selon la position
   saveLivres();
   afficherLivres();
 }
