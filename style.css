@@ -69,3 +69,28 @@ p{
   width: 180px;               /* Même largeur pour tous les labels */
   text-align: left;           /* Texte collé à gauche */ 
   }
+/* Media query pour les écrans de moins de 600px */
+@media screen and (max-width: 600px) {
+  form, table {
+    width: 95%; /* prend presque toute la largeur de l’écran */
+  }
+
+  .class1 {
+    flex-direction: column; /* empile label et input */
+    align-items: flex-start; /* aligne à gauche */
+  }
+
+  .class1 label {
+    width: 100%; /* label prend toute la largeur disponible */
+    margin-bottom: 5px; /* espace entre label et input */
+  }
+
+  input, button {
+    width: 100%; /* input et bouton prennent toute la largeur */
+  }
+
+  nav a {
+    display: block;   /* les liens du menu s’empilent verticalement */
+    margin: 5px 0;
+  }
+}
