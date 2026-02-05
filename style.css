@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f9; /* gris très clair*/
+  margin: 0;
+  padding: 20px; /* espace entre le bord de la page  et le contenu*/
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {/*toute la barre de navigation (conteneur du menu)*/
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+nav a {/*seulement les bouttons et  menu*/
+  margin: 0 10px;
+  text-decoration: none; /* supprime le soulignement automatique des liens*/
+  color: #2c3e50;    /*bleu gris foncé*/
+  font-weight: bold;
+}
+
+table {
+  width: 80%;
+  margin: auto; /*centre le tableau horizontalement dans la page*/
+  border-collapse: collapse; /*fusionn les bordures du tableau*/
+  background: white;
+}
+
+td {
+  background-color: #3498db;
+  color: white;
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+form {
+  width: 300px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+input, button {
+  margin-bottom: 10px;
+  padding: 8px;
+}
+
+button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  cursor: pointer; /*la souris devien une main*/
+}
+
+button:hover {
+  background-color: #27ae60;
+}
+p{
+  text-align: center;
+}
+ .class1{
+  display: flex;              /* Met (label , input) sur la même ligne */
+  margin-bottom: 15px;
+}
+.class1 label{
+  width: 180px;               /* Même largeur pour tous les labels */
+  text-align: left;           /* Texte collé à gauche */ 
+  }
