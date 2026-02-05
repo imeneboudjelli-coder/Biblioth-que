@@ -72,8 +72,11 @@ function supprimerLivre(index) {
 
 // Toujours lire les emprunts depuis localStorage
 function getEmprunts() {
-  return JSON.parse(localStorage.getItem("emprunts")) || [];
+  return JSON.parse(localStorage.getItem("emprunts")) || [
+    { titre: "1984", auteur: "George Orwell", annee: 1949 }
+  ];
 }
+
 
 function saveEmprunts(emprunts) {
   localStorage.setItem("emprunts", JSON.stringify(emprunts));
